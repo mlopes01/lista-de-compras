@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  list-style: none;
+}
+
+
+body {
+  color: red;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(black, blue, aqua, white);
+}

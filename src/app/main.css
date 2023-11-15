@@ -1,0 +1,26 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.formdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    height: 100%;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+}
+
+.ul {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+}
