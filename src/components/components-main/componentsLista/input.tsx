@@ -12,6 +12,6 @@ interface InputProps {
 
 export function Input({ size, type, placeholder, onChange }: InputProps) {
     return (
-        <input height={size} type={type} placeholder={placeholder} onChange={onChange} />
+        <input className='input' height={size} type={type} placeholder={placeholder} onChange={onChange} />
     )
 }
