@@ -1,0 +1,32 @@
+footer {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    height: 20%;
+
+}
+
+footer div {
+    display: flex;
+    align-items: center;
+}
+
+.sociais {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contato {
+    display: flex;
+    gap: 10px;
+}
+
+.Scontato {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
