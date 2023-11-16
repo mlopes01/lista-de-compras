@@ -9,7 +9,7 @@ export function Likesprop() {
 
     return (
         <div className='divlikesprop'>
-            <h2 className='likeh2'>Curta nossa pagina</h2>
+            <h2 className='likeh2'>Curta nossa página</h2>
             <div className='likesprop'>
                 <span className='spanclick' onClick={() => LikeClick(likes + 1)} ><FontAwesomeIcon icon={faThumbsUp} /></span><p>({likes})</p>
                 <span className='spanclick' onClick={() => DeslikeClick(deslikes + 1)}> <FontAwesomeIcon icon={faThumbsDown} /></span><p>({deslikes})</p>
