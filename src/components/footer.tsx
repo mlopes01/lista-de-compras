@@ -6,10 +6,10 @@ export function Rodape() {
     return (
 
         <footer>
-            <span><h3>Desenvolvedores</h3>
-                <p>Nara...Allan...Marcelo <br />Estudantes de FrontEnd </p>
+            <span className='spandev'><h3>Desenvolvedores</h3>
+                <p>Nara,Allan,Marcelo <br />Estudantes de FrontEnd </p>
             </span>
-            <p>&copy; {2023}      <p>Nara...Allan...Marcelo</p>  todos os direitos reservados</p>
+            <div className="copydiv">&copy; {2023}<line />NAM<line />todos os direitos reservados</div>
             <div className="Scontato">
                 <h3>Sociais</h3>
                 <div className="contato">

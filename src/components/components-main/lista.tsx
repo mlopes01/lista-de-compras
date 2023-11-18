@@ -12,7 +12,8 @@ export function Lista() {
 
         if (tarefa.trim() === '') return;
         setAddTarefa((oldAddTarefa) => [tarefa, ...oldAddTarefa])
-        setTarefa('');
+
+        setTarefa('')
 
     }
 
@@ -31,8 +32,8 @@ export function Lista() {
                 ></Input>
                 <Btn type="submit">Criar</Btn>
             </form>
-            <ul className='ul'><h3>Tarefas Criadas </h3>{addTarefa.map((lista) =>
-                <li className='li'>{lista}</li>
+            <ul className='ul'><h3>Tarefas Criadas </h3>{addTarefa.map((e) =>
+                <li className='li'>{e}</li>
             )}</ul>
         </div>
 

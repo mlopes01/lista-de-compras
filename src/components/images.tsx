@@ -11,7 +11,7 @@ export function Logo() {
 
 export function Sociais() {
     return (
-        <div>
+        <div >
             <img src="/image/linkdinlogo.jpg"
                 alt="LinkedIn" width={20}
                 height={20} />
