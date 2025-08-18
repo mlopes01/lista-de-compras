@@ -1,13 +1,10 @@
-import { Likesprop } from "./components-main/icons";
-import { Lista } from "./components-main/lista";
-import { Logo } from "./images";
+import { Lista1 } from "./components-main/lista1";
 
 export function Menu() {
     return (
         <main>
-            <div className="logo"><Logo></Logo></div>
-            <Likesprop></Likesprop>
-            <Lista></Lista>
+
+            <Lista1></Lista1>
         </main>
     )
 }

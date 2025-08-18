@@ -1,6 +1,6 @@
 export function Logo() {
     return (
-        <img src="/image/logoNAM.png"
+        <img src="/image/fundo de lista.jpg"
             alt=""
             width={1920}
             height={200}

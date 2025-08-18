@@ -4,12 +4,12 @@
   margin: 0;
   border: 0;
   list-style: none;
+  
 }
 
 
 body {
-
+  gap: 20PX;
   width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(black, blue, aqua, white);
+  background-image: linear-gradient(to bottom, #555555, #444444, #363636);
 }

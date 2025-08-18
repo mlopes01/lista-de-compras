@@ -1,10 +1,10 @@
 footer {
-    background-color: black;
+    background-color: beige;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    color: white;
-    height: 20%;
+    color: black;
+        height: 200px;
 
 }
 
