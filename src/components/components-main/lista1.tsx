@@ -13,14 +13,13 @@ import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CartBadge from '@mui/material/Badge';
+import SendIcon from '@mui/icons-material/Send';
 
 type Tarefa = {
   id: string;
   name: string;
   preço: string | number;
   qtd: number;
-  data: string;
-  hora: string;
   checked: boolean;
 };
 
@@ -41,37 +40,82 @@ export function Lista1() {
   
 
 
-
- 
- // Função para adiciona um item na lista
-  function handleSetTarefa(e: FormEvent) {
-    e.preventDefault()
-    if (tarefa.trim() === '') return;
-
-    const agora = new Date();
-    const data = agora.toLocaleDateString();
-    const hora = agora.toLocaleTimeString();
-
-    setAddTarefa((old) => [{
-      id: uuidv4(),
-      name: tarefa,
-      preço: Preço,
-      qtd: Qtd,
-      data,
-      hora,
-      checked: false // Inicialmente, o item não está selecionado
-    }, ...old])
-
-    setPreço('0')
-    setTarefa('')
-    setQtd(1)
-   
+  // Carregar lista do backend
+  async function carregarItens() {
+    const resp = await fetch("http://127.0.0.1:8000/");
+    const data = await resp.json();
+    setAddTarefa(data);
   }
 
-   // Função para escluir um item
-  function handleExcluir(id: string) {
-    setAddTarefa((old) => old.filter((t) => t.id !== id))
+
+
+  // Adicionar item
+  async function handleSetTarefa(e: FormEvent) {
+    e.preventDefault();
+    if (tarefa.trim() === "") return;
+
+
+
+    await fetch("http://127.0.0.1:8000/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: tarefa,
+        preço: parseFloat(Preço),
+        qtd: Qtd,
+      }),
+    });
+
+    setTarefa("");
+    setPreço("0");
+    setQtd(1);
+    carregarItens(); // recarregar lista
   }
+
+  // Remover item
+  async function handleExcluir(id: string) {
+    await fetch(`http://127.0.0.1:8000/${id}`, {
+      method: "DELETE",
+    });
+    carregarItens();
+  }
+
+  //Carregar ao abrir
+  useEffect(() => {
+    carregarItens();
+  }, []);
+
+
+
+  // Função para adiciona um item na lista
+  //  function handleSetTarefa(e: FormEvent) {
+  // e.preventDefault()
+  // if (tarefa.trim() === '') return;
+
+  // const agora = new Date();
+  //  const data = agora.toLocaleDateString();
+  //  const hora = agora.toLocaleTimeString();
+
+  //  setAddTarefa((old) => [{
+  //    id: uuidv4(),
+  //   name: tarefa,
+  //   preço: Preço,
+  //   qtd: Qtd,
+  //   data,
+  //   hora,
+  //  checked: false // Inicialmente, o item não está selecionado
+  //  }, ...old])
+
+  // setPreço('0')
+  //  setTarefa('')
+  //  setQtd(1)
+
+  //  }
+
+  // Função para escluir um item
+  //  function handleExcluir(id: string) {
+  //    setAddTarefa((old) => old.filter((t) => t.id !== id))
+  //  }
 
    // Função para editar um item
   function handleEditar(id: string, nomeAtual: string,preçoAtual:string | number,qtdAtual:number) {
@@ -159,11 +203,14 @@ const handleChange1 = () => {
         </div>
         <div className='totaldiv'>
           <Fab type="submit">
-  <ShoppingCartIcon fontSize="large"  color="primary"/>
+            <AddIcon fontSize="large" color="primary" />
   <CartBadge color="secondary" overlap="circular" />
 </Fab>
           <div className='totaisdiv'>
-            <div>TOTAL <div className='total'>{addTarefa.reduce((total, e) => total + e.qtd, 0)}</div></div>
+            <div><Fab>
+              <ShoppingCartIcon fontSize="large" color="primary" />
+              <CartBadge badgeContent={addTarefa.reduce((total, e) => total + e.qtd, 0)} color="secondary" overlap="circular" />
+            </Fab></div>
             <div>TOTAL <div className='total'>R${addTarefa.reduce((total, e) => total + e.qtd * parseFloat(e.preço.toString()), 0).toFixed(2)}</div></div>
           </div>
         </div>
@@ -210,7 +257,7 @@ const handleChange1 = () => {
               ) : (
                 <div>{e.name.toUpperCase()}</div>
               )}
-              <div>Hora {e.hora}</div>
+              <div>Hora { }</div>
               <div><Fab>
   <ShoppingCartIcon fontSize="large" color="primary" />
   <CartBadge badgeContent={e.qtd} color="secondary" overlap="circular" />
@@ -227,12 +274,12 @@ const handleChange1 = () => {
 
               {editandoId === e.id ? (
                 <Fab size='large'  aria-label="save" onClick={() => handleSalvarEdicao(e.id)}>
-  <EditIcon fontSize='large' color="primary"/>
+                  <SendIcon fontSize='large' color="primary" />
 </Fab>
               
               ) : (
                 <Fab size='large'  aria-label="edit" onClick={() => handleEditar(e.id, e.name,e.preço,e.qtd)}>
-  <EditIcon fontSize='large' color="primary"/>
+                    <EditIcon fontSize='large' color="primary" />
 </Fab>
                
               )}        
